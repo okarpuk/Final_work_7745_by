@@ -1,3 +1,5 @@
+from selenium.webdriver.support.select import Select
+
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -38,12 +40,26 @@ class Login_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.tv_button)))
 
 
-
-
-
-
-
 # Actions
+    def click_enter_button(self):
+        self.get_enter_button().click()
+        print("Enter button clicked")
+
+    def click_selector_registration(self):
+        self.get_selector_registration().click()
+        se = Select(self.get_selector_registration)
+        for item in se.options:
+            if item.text == 'e-mail':
+                item.click()
+                break
+        print("Email registration type selected")
+
+
+
+
+
+
+
     def input_user_name(self, user_name):
         self.get_user_name().send_keys(user_name)
         print("User name entered")
@@ -52,9 +68,19 @@ class Login_page(Base):
         self.get_password().send_keys(password)
         print("Password entered")
 
-    def click_login_button(self):
-        self.get_button_login().click()
-        print("Login button clicked")
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def authorization(self):
         self.driver.get(self.url)
