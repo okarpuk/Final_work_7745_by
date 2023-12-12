@@ -1,7 +1,7 @@
-from selenium.webdriver.support.select import Select
-
+import time
 from base.base_class import Base
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -15,7 +15,7 @@ class Login_page(Base):
 # Locators
     enter_button = "//div[@id='logon-link']/div[2]"
     selector_registration = "//div[@class='open-logon open-login']//div//select[@name='prefix']"
-    user_name = "//div[@class='open-logon open-login']//div//input[@id='login-modal-input-login']"
+    user_login = "//div[@class='open-logon open-login']//div//input[@id='login-modal-input-login']"
     user_password = "//div[@class='open-logon open-login']//div//input[@id='password']"
     enter_2_button = "div[class='open-logon open-login'] div input[value='Войти']"     #CSS SELECTOR !!!!!!!!
     tv_button = "//a[@class='header-categories__item'][contains(text(),'Телевизоры')]"
@@ -27,8 +27,8 @@ class Login_page(Base):
     def get_selector_registration(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.selector_registration)))
 
-    def get_user_name(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_name)))
+    def get_user_login(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_login)))
 
     def get_user_password(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_password)))
@@ -39,11 +39,10 @@ class Login_page(Base):
     def get_tv_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.tv_button)))
 
-
 # Actions
     def click_enter_button(self):
         self.get_enter_button().click()
-        print("Enter button clicked")
+        print("First enter button clicked")
 
     def click_selector_registration(self):
         self.get_selector_registration().click()
@@ -54,40 +53,29 @@ class Login_page(Base):
                 break
         print("Email registration type selected")
 
-
-
-
-
-
-
-    def input_user_name(self, user_name):
+    def input_user_login(self, user_name):
         self.get_user_name().send_keys(user_name)
-        print("User name entered")
+        print("User login entered")
 
-    def input_password(self, password):
-        self.get_password().send_keys(password)
-        print("Password entered")
+    def input_user_password(self, password):
+        self.get_user_password().send_keys(password)
+        print("User password entered")
 
+    def click_enter_2_button(self):
+        self.get_enter_2_button().click()
+        time.sleep(10)
+        print("Second enter button clicked")
 
-
-
-
-
-
-
-
-
-
-
-
-
+    def click_tv_button(self):
+        self.get_tv_button().click()
+        print("TV button clicked")
 
     def authorization(self):
         self.driver.get(self.url)
         self.driver.delete_all_cookies()
         self.driver.maximize_window()
         self.get_current_url()
-        self.input_user_name("standard_user")
-        self.input_password("secret_sauce")
-        self.click_login_button()
-        self.assert_word(self.get_main_word(), "Products")
+        self.input_user_login("final_project_test@mail.ru")
+        self.input_user_password("1A.2b.3c.4d")
+        self.click_enter_2_button()
+        # self.assert_word(self.get_main_word(), "Products")
