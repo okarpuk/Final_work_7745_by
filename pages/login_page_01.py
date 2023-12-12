@@ -1,4 +1,7 @@
 import time
+
+from selenium.webdriver import Keys
+
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -17,7 +20,9 @@ class Login_page(Base):
     selector_registration = "//div[@class='open-logon open-login']//div//select[@name='prefix']"
     user_login = "//div[@class='open-logon open-login']//div//input[@id='login-modal-input-login']"
     user_password = "//div[@class='open-logon open-login']//div//input[@id='password']"
-    enter_2_button = "div[class='open-logon open-login'] div input[value='Войти']"     #CSS SELECTOR !!!!!!!!
+    enter_2_button = "div[class='open-logon open-login'] div input[type='submit']"
+    # enter_2_button = "//button[normalize-space()='Войти']"
+
     tv_button = "//a[@class='header-categories__item'][contains(text(),'Телевизоры')]"
 
     # Getters
@@ -46,25 +51,22 @@ class Login_page(Base):
 
     def click_selector_registration(self):
         self.get_selector_registration().click()
-        se = Select(self.get_selector_registration)
-        for item in se.options:
-            if item.text == 'e-mail':
-                item.click()
-                break
-        print("Email registration type selected")
+        Select(self.get_selector_registration()).select_by_visible_text("e-mail")
 
     def input_user_login(self, user_name):
-        self.get_user_name().send_keys(user_name)
+        self.get_user_login().send_keys(user_name)
         print("User login entered")
 
     def input_user_password(self, password):
         self.get_user_password().send_keys(password)
+        # self.get_user_password().send_keys(Keys.RETURN)
+        time.sleep(12)
         print("User password entered")
 
     def click_enter_2_button(self):
         self.get_enter_2_button().click()
-        time.sleep(10)
         print("Second enter button clicked")
+        time.sleep(10)
 
     def click_tv_button(self):
         self.get_tv_button().click()
@@ -75,7 +77,10 @@ class Login_page(Base):
         self.driver.delete_all_cookies()
         self.driver.maximize_window()
         self.get_current_url()
+        self.click_enter_button()
+        self.click_selector_registration()
         self.input_user_login("final_project_test@mail.ru")
         self.input_user_password("1A.2b.3c.4d")
         self.click_enter_2_button()
+        self.click_tv_button()
         # self.assert_word(self.get_main_word(), "Products")
