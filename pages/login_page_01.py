@@ -1,7 +1,4 @@
 import time
-
-from selenium.webdriver import Keys
-
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -21,8 +18,6 @@ class Login_page(Base):
     user_login = "//div[@class='open-logon open-login']//div//input[@id='login-modal-input-login']"
     user_password = "//div[@class='open-logon open-login']//div//input[@id='password']"
     enter_2_button = "div[class='open-logon open-login'] div input[type='submit']"
-    # enter_2_button = "//button[normalize-space()='Войти']"
-
     tv_button = "//a[@class='header-categories__item'][contains(text(),'Телевизоры')]"
 
     # Getters
@@ -60,8 +55,6 @@ class Login_page(Base):
 
     def input_user_password(self, password):
         self.get_user_password().send_keys(password)
-        # self.get_user_password().send_keys(Keys.RETURN)
-        time.sleep(12)
         print("User password entered")
 
     def click_enter_2_button(self):
@@ -69,23 +62,12 @@ class Login_page(Base):
         print("Second enter button clicked")
         time.sleep(10)
 
-        # element = driver.find_element_by_id('myButton')
-        # actions = ActionChains(driver)
-        # actions.click(element)
-        # actions.perform()
-        #
-        # element = driver.find_element_by_id('myButton')
-        # driver.execute_script("arguments[0].click();", element)
-
-
-
     def click_tv_button(self):
         self.get_tv_button().click()
         print("TV button clicked")
 
     def authorization(self):
         self.driver.get(self.url)
-        self.driver.delete_all_cookies()
         self.driver.maximize_window()
         self.get_current_url()
         self.click_enter_button()
