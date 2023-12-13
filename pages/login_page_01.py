@@ -44,6 +44,7 @@ class Login_page(Base):
     def get_tv_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.tv_button)))
 
+
 # Actions
     def click_enter_button(self):
         self.get_enter_button().click()
@@ -67,6 +68,16 @@ class Login_page(Base):
         self.get_enter_2_button().click()
         print("Second enter button clicked")
         time.sleep(10)
+
+        # element = driver.find_element_by_id('myButton')
+        # actions = ActionChains(driver)
+        # actions.click(element)
+        # actions.perform()
+        #
+        # element = driver.find_element_by_id('myButton')
+        # driver.execute_script("arguments[0].click();", element)
+
+
 
     def click_tv_button(self):
         self.get_tv_button().click()
