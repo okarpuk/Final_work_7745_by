@@ -21,24 +21,37 @@ class Main_page(Base):
     add_to_cart_button = "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[2]/div[1]/button"
     cart_button = "//a[@id='cart-link']"
 
-    # Getters
-    def get_add_to_cart_button_1(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_button_1)))
+# Getters
+    def get_price_slider_1(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.price_slider_1)))
 
-    def get_add_to_cart_button_2(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_button_2)))
+    def get_price_slider_2(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.price_slider_2)))
 
-    def get_add_to_cart_button_3(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_button_3)))
+    def get_brands_dropdown(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.brands_dropdown)))
+
+    def get_checkbox_lg(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_lg)))
+
+    def get_checkbox_diagonal(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_diagonal)))
+
+    def get_checkbox_screen_technology(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_screen_technology)))
+
+    def get_checkbox_screen_resolution(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_screen_resolution)))
+
+    def get_confirm_filter_button(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.confirm_filter_button)))
+
+    def get_add_to_cart_button(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_button)))
 
     def get_cart_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cart_button)))
 
-    def get_menu_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.menu_button)))
-
-    def get_about_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.about_button)))
 
 # Actions
     def click_add_to_cart_button_1(self):
