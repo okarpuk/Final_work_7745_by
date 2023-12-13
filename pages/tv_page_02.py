@@ -12,26 +12,14 @@ class Main_page(Base):
 # Locators
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
-    brands_dropdown = driver.find_element(By.XPATH, "//*[@id='catalog-filter-form']/div[3]/div[2]/div[8]/label")
-    checkbox_lg = driver.find_element(By.XPATH,
-                                      "//*[@id='catalog-filter-form']/div[3]/div[2]/div[10]/div/div/div/div[10]/label/span[1]/span")
-    checkbox_diagonal = driver.find_element(By.XPATH,
-                                            "//*[@id='catalog-filter-form']/div[5]/div[3]/div[6]/label/span[1]")
-    checkbox_screen_technology = driver.find_element(By.XPATH,
-                                                     "//*[@id='catalog-filter-form']/div[6]/div[3]/div[2]/label/span[1]/span")
-    checkbox_screen_resolution = driver.find_element(By.XPATH,
-                                                     "//*[@id='catalog-filter-form']/div[7]/div[3]/div[3]/label/span[1]/span")
-    confirm_filter_button = driver.find_element(By.XPATH, "//*[@id='catalog-filter-form']/div[33]/button[1]")
-
-    add_to_cart_button = driver.execute_script("return document.querySelector('.action-btn--btn-buy');")
-    cart_button = driver.find_element(By.XPATH, "//a[@id='cart-link']")
-
-
-
-
-
-
-
+    brands_dropdown = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[8]/label"
+    checkbox_lg = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[10]/div/div/div/div[10]/label/span[1]/span"
+    checkbox_diagonal = "//*[@id='catalog-filter-form']/div[5]/div[3]/div[6]/label/span[1]"
+    checkbox_screen_technology = "//*[@id='catalog-filter-form']/div[6]/div[3]/div[2]/label/span[1]/span"
+    checkbox_screen_resolution = "//*[@id='catalog-filter-form']/div[7]/div[3]/div[3]/label/span[1]/span"
+    confirm_filter_button = "//*[@id='catalog-filter-form']/div[33]/button[1]"
+    add_to_cart_button = "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[2]/div[1]/button"
+    cart_button = "//a[@id='cart-link']"
 
     # Getters
     def get_add_to_cart_button_1(self):
