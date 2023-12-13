@@ -1,15 +1,17 @@
+from selenium.webdriver import ActionChains
+
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class Main_page(Base):
+class Tv_page(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
 
-# Locators
+    # Locators
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
     brands_dropdown = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[8]/label"
@@ -54,52 +56,65 @@ class Main_page(Base):
 
 
 # Actions
-    def click_add_to_cart_button_1(self):
-        self.get_add_to_cart_button_1().click()
-        print("Add to cart button 1 clicked")
+    def move_price_slider_1(self):
+        action = ActionChains(self.driver)
+        action.click_and_hold(self.get_price_slider_1()).move_by_offset(20, 0).release().perform()
+        print("Slider 1 moved")
 
-    def click_add_to_cart_button_2(self):
-        self.get_add_to_cart_button_2().click()
-        print("Add to cart button 2 clicked")
+    def move_price_slider_2(self):
+        action = ActionChains(self.driver)
+        action.click_and_hold(self.get_price_slider_2()).move_by_offset(-50, 0).release().perform()
+        print("Slider 2 moved")
 
-    def click_add_to_cart_button_3(self):
-        self.get_add_to_cart_button_3().click()
-        print("Add to cart button 3 clicked")
+    def click_brands_dropdown(self):
+        self.get_brands_dropdown().click()
+        print("Brands dropdown clicked")
 
-    def click_cart_button(self):
-        self.get_cart_button().click()
-        print("Cart button clicked")
+    def click_checkbox_lg(self):
+        self.get_checkbox_lg().click()
+        print("LG checkbox selected")
 
-    def click_menu_button(self):
-        self.get_menu_button().click()
-        print("Menu button clicked")
 
-    def click_about_button(self):
-        self.get_about_button().click()
-        print("About button clicked")
 
-# Methods
-    def select_product_1(self):
-        self.get_current_url()
-        self.click_add_to_cart_button_1()
-        self.click_cart_button()
-        self.get_current_url()
+    # def execute_script(self, param, param1):
+    #     self.execute_script("arguments[0].click();", self.get_checkbox_diagonal())
+    #     print("Diagonal selected")
 
-    def select_product_2(self):
-        self.get_current_url()
-        self.click_add_to_cart_button_2()
-        self.click_cart_button()
-        self.get_current_url()
 
-    def select_product_3(self):
-        self.get_current_url()
-        self.click_add_to_cart_button_3()
-        self.click_cart_button()
-        self.get_current_url()
 
-    def select_menu_about(self):
-        self.get_current_url()
-        self.click_menu_button()
-        self.click_about_button()
-        self.get_current_url()
-        self.assert_url('https://saucelabs.com/')
+
+    # def click_checkbox_diagonal(self):
+    #     # self.get_checkbox_diagonal().click()
+    #     self.driver.execute_script("arguments[0].click();", self.get_checkbox_diagonal())
+    #     print("Diagonal selected")
+
+    # def click_checkbox_diagonal(self):
+    #     self.get_checkbox_diagonal().location_once_scrolled_into_view
+    #     self.get_checkbox_diagonal().click()
+
+    def click_checkbox_diagonal(self):
+        action = ActionChains(self.driver)
+        action.move_to_element(self.get_checkbox_diagonal()).perform()
+        self.get_checkbox_diagonal().click()
+
+
+
+
+
+
+
+
+    # Methods
+
+    def select_tv(self):
+        self.move_price_slider_1()
+        self.move_price_slider_2()
+        self.click_brands_dropdown()
+        self.click_checkbox_lg()
+        self.click_checkbox_diagonal()
+
+
+
+
+        # self.assert_url('https://saucelabs.com/')
+

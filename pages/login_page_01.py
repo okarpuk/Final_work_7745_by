@@ -66,6 +66,7 @@ class Login_page(Base):
         self.get_tv_button().click()
         print("TV button clicked")
 
+# METHOD
     def authorization(self):
         self.driver.get(self.url)
         self.driver.maximize_window()

@@ -3,6 +3,9 @@ from selenium import webdriver
 # from pages.cart_page_03 import Cart_page
 # from pages.last_page import Last_page
 from pages.login_page_01 import Login_page
+from pages.tv_page_02 import Tv_page
+
+
 # from pages.tv_page_02 import Main_page
 # from pages.user_info_page_04 import User_info_page
 
@@ -13,8 +16,8 @@ def test_buy_product():
     login = Login_page(driver)
     login.authorization()
 
-    # mp = Main_page(driver)
-    # mp.select_product()
+    tp = Tv_page(driver)
+    tp.select_tv()
     #
     # cp = Cart_page(driver)
     # cp.confirm_product()
