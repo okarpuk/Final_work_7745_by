@@ -11,7 +11,7 @@ class Main_page(Base):
 
 # Locators
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
-    price_slider_2 = driver.find_element(By.XPATH, "//*[@id='filter-range-price']/span[2]")
+    price_slider_2 = "//*[@id='filter-range-price']/span[2]"
     brands_dropdown = driver.find_element(By.XPATH, "//*[@id='catalog-filter-form']/div[3]/div[2]/div[8]/label")
     checkbox_lg = driver.find_element(By.XPATH,
                                       "//*[@id='catalog-filter-form']/div[3]/div[2]/div[10]/div/div/div/div[10]/label/span[1]/span")
