@@ -80,16 +80,20 @@ class Tv_page(Base):
         self.driver.execute_script("window.scrollBy(0, 800);") #Другие способы прокручивания страницы до элемента не работают
         self.get_checkbox_diagonal().click()
         print("Diagonal selected")
-        time.sleep(5)
+
+    def click_checkbox_screen_technology(self):
+        self.get_checkbox_screen_technology().click()
+        print("Screen technology selected")
+
+    def click_checkbox_screen_resolution(self):
+        self.get_checkbox_screen_resolution().click()
+        print("Screen technology selected")
 
 
 
-
-    get_checkbox_screen_technology
-    get_checkbox_screen_resolution
-    get_confirm_filter_button
-    get_add_to_cart_button
-    get_cart_button
+    # get_confirm_filter_button
+    # get_add_to_cart_button
+    # get_cart_button
 
     # Methods
 
@@ -99,6 +103,8 @@ class Tv_page(Base):
         self.click_brands_dropdown()
         self.click_checkbox_lg()
         self.click_checkbox_diagonal()
+        self.click_checkbox_screen_technology()
+        self.click_checkbox_screen_resolution()
 
 
 
