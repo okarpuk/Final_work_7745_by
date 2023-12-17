@@ -1,7 +1,5 @@
 import time
-
 from selenium.webdriver import ActionChains
-
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -13,7 +11,7 @@ class Tv_page(Base):
         super().__init__(driver)
         self.driver = driver
 
-    # Locators
+# LOCATORS
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
     brands_dropdown = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[8]/label"
@@ -25,7 +23,7 @@ class Tv_page(Base):
     add_to_cart_button = "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[2]/div[1]/button"
     cart_button = "//a[@id='cart-link']"
 
-# Getters
+# GETTERS
     def get_price_slider_1(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.price_slider_1)))
 
@@ -56,8 +54,7 @@ class Tv_page(Base):
     def get_cart_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cart_button)))
 
-
-# Actions
+# ACTIONS
     def move_price_slider_1(self):
         action = ActionChains(self.driver)
         action.click_and_hold(self.get_price_slider_1()).move_by_offset(20, 0).release().perform()
@@ -77,7 +74,6 @@ class Tv_page(Base):
         print("LG checkbox selected")
 
     def click_checkbox_diagonal(self):
-        self.driver.execute_script("window.scrollBy(0, 800);") #Другие способы прокручивания страницы до элемента не работают
         self.get_checkbox_diagonal().click()
         print("Diagonal selected")
 
@@ -87,27 +83,32 @@ class Tv_page(Base):
 
     def click_checkbox_screen_resolution(self):
         self.get_checkbox_screen_resolution().click()
-        print("Screen technology selected")
+        print("Screen resolution selected")
 
+    def click_confirm_filter_button(self):
+        self.get_confirm_filter_button().click()
+        print("Confifm button clicked")
 
+    def click_add_to_cart_button(self):
+        self.get_add_to_cart_button().click()
+        print("Add to cart button clicked")
 
-    # get_confirm_filter_button
-    # get_add_to_cart_button
-    # get_cart_button
+    def click_cart_button(self):
+        self.get_cart_button().click()
+        print("Cart button clicked")
 
-    # Methods
-
+# METHODS
     def select_tv(self):
         self.move_price_slider_1()
         self.move_price_slider_2()
         self.click_brands_dropdown()
         self.click_checkbox_lg()
+        self.driver.execute_script("window.scrollBy(0, 800);") #Другие способы прокручивания страницы до элемента не работают
         self.click_checkbox_diagonal()
         self.click_checkbox_screen_technology()
         self.click_checkbox_screen_resolution()
-
-
-
-
+        self.click_confirm_filter_button()
+        time.sleep(3) # Ожидания не срабатывают - выдает ощибку:  stale element not found
+        self.click_add_to_cart_button()
+        self.click_cart_button()
         # self.assert_url('https://saucelabs.com/')
-

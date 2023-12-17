@@ -12,7 +12,7 @@ class Login_page(Base):
         super().__init__(driver)
         self.driver = driver
 
-# Locators
+# LOCATORS
     enter_button = "//div[@id='logon-link']/div[2]"
     selector_registration = "//div[@class='open-logon open-login']//div//select[@name='prefix']"
     user_login = "//div[@class='open-logon open-login']//div//input[@id='login-modal-input-login']"
@@ -20,7 +20,7 @@ class Login_page(Base):
     enter_2_button = "div[class='open-logon open-login'] div input[type='submit']"
     tv_button = "//a[@class='header-categories__item'][contains(text(),'Телевизоры')]"
 
-    # Getters
+# GETTERS
     def get_enter_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.enter_button)))
 
@@ -39,8 +39,7 @@ class Login_page(Base):
     def get_tv_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.tv_button)))
 
-
-# Actions
+# ACTIONS
     def click_enter_button(self):
         self.get_enter_button().click()
         print("First enter button clicked")
@@ -66,7 +65,7 @@ class Login_page(Base):
         self.get_tv_button().click()
         print("TV button clicked")
 
-# METHOD
+# METHODS
     def authorization(self):
         self.driver.get(self.url)
         self.driver.maximize_window()
