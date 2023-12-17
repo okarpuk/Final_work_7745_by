@@ -71,14 +71,14 @@ class Login_page(Base):
     def user_name_assert(self):
         user_name = self.driver.find_element(By.XPATH, "//*[@id ='panel']/div[1]/div[2]/div/div[3]/div[4]/div/div/a/div/div[2]")
         user_name_text = user_name.text
-        print(f"{user_name_text}")
+        print(f"USER NAME - {user_name_text}")
         assert user_name_text == "Ivanov Ivan"
         print("User name correct")
 
     def page_name_assert(self):
         page_name = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/h1")
         page_name_text = page_name.text
-        print(f"{page_name_text}")
+        print(f"PAGE NAME - {page_name_text}")
         assert page_name_text == "Телевизоры"
         print("Page name correct")
 

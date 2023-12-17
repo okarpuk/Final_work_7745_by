@@ -102,11 +102,11 @@ class Tv_page(Base, unittest.TestCase):
     def product_price(self):
         product_price_locator = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div")
         product_price_text = product_price_locator.text
-        print(f"Product price - {product_price_text}")
+        print(f"PRODUCT PRICE - {product_price_text}")
 
     def cart_page_name_assert(self):
         cart_page_name = self.driver.find_element(By.XPATH, "//*[@id='svelte-page']/h1").text
-        print(f"Page name - {cart_page_name}")
+        print(f"PAGE NAME - {cart_page_name}")
         self.assertIn("Оформление заказа", cart_page_name)
         print("Page name correct")
 

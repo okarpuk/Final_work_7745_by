@@ -66,25 +66,9 @@ class Cart_page(Base):
 
 
 
-
-
-
-
 # METHODS
     def confirm_offer(self):
-        # ассерт что в корзине 1 товар
-        # вывести стоимость товара
-
         self.click_plus_one_product_button()
-
-        # ассерт что в корзине 2 товара
-        # асерт что цена стала х2
-
-        # клик минус 1 парт
-        # ассерт что в корзине 1 товар
-        # ассерт, что нынешняя стоимость товара равна первоначальной
-
-
         self.click_user_type_radiobutton()
         self.input_unp("12121212")
         self.input_organization_name("My test organization")
