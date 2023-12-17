@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver import ActionChains
 
 from base.base_class import Base
@@ -74,35 +76,20 @@ class Tv_page(Base):
         self.get_checkbox_lg().click()
         print("LG checkbox selected")
 
-
-
-    # def execute_script(self, param, param1):
-    #     self.execute_script("arguments[0].click();", self.get_checkbox_diagonal())
-    #     print("Diagonal selected")
-
-
-
-
-    # def click_checkbox_diagonal(self):
-    #     # self.get_checkbox_diagonal().click()
-    #     self.driver.execute_script("arguments[0].click();", self.get_checkbox_diagonal())
-    #     print("Diagonal selected")
-
-    # def click_checkbox_diagonal(self):
-    #     self.get_checkbox_diagonal().location_once_scrolled_into_view
-    #     self.get_checkbox_diagonal().click()
-
     def click_checkbox_diagonal(self):
-        action = ActionChains(self.driver)
-        action.move_to_element(self.get_checkbox_diagonal()).perform()
+        self.driver.execute_script("window.scrollBy(0, 800);") #Другие способы прокручивания страницы до элемента не работают
         self.get_checkbox_diagonal().click()
+        print("Diagonal selected")
+        time.sleep(5)
 
 
 
 
-
-
-
+    get_checkbox_screen_technology
+    get_checkbox_screen_resolution
+    get_confirm_filter_button
+    get_add_to_cart_button
+    get_cart_button
 
     # Methods
 
