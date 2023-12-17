@@ -72,8 +72,7 @@ class Login_page(Base):
         user_name = self.driver.find_element(By.XPATH, "//*[@id ='panel']/div[1]/div[2]/div/div[3]/div[4]/div/div/a/div/div[2]")
         user_name_text = user_name.text
         print(f"{user_name_text}")
-        # assert user_name_text == "Ivanov Ivan"
-        assert user_name.text == "Ivanov Ivan"
+        assert user_name_text == "Ivanov Ivan"
         print("User name correct")
 
     def page_name_assert(self):
@@ -98,4 +97,3 @@ class Login_page(Base):
         self.assert_url('https://7745.by/catalog/televizory')
         self.user_name_assert()
         self.page_name_assert()
-        # self.assert_word(self.get_tv_assert_word(), "Телевизоры")

@@ -1,11 +1,13 @@
 import time
+import unittest
+
 from selenium.webdriver import ActionChains
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class Tv_page(Base):
+class Tv_page(Base, unittest.TestCase):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -97,6 +99,17 @@ class Tv_page(Base):
         self.get_cart_button().click()
         print("Cart button clicked")
 
+    def product_price(self):
+        product_price_locator = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div")
+        product_price_text = product_price_locator.text
+        print(f"Product price - {product_price_text}")
+
+    def cart_page_name_assert(self):
+        cart_page_name = self.driver.find_element(By.XPATH, "//*[@id='svelte-page']/h1").text
+        print(f"{cart_page_name}")
+        self.assertIn("Оформление заказа", cart_page_name)
+        print("Page name correct")
+
 # METHODS
     def select_tv(self):
         self.move_price_slider_1()
@@ -109,8 +122,9 @@ class Tv_page(Base):
         self.click_checkbox_screen_resolution()
         self.click_confirm_filter_button()
         time.sleep(3) # Ожидания не срабатывают - выдает ощибку:  stale element not found
+        self.product_price()
         self.click_add_to_cart_button()
         self.click_cart_button()
         self.get_current_url()
         self.assert_url('https://7745.by/cart')
-        # self.assert_word(self.get_tv_assert_word(), "Телевизоры")
+        self.cart_page_name_assert()
