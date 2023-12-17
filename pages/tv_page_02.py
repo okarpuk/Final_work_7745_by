@@ -111,4 +111,6 @@ class Tv_page(Base):
         time.sleep(3) # Ожидания не срабатывают - выдает ощибку:  stale element not found
         self.click_add_to_cart_button()
         self.click_cart_button()
-        # self.assert_url('https://saucelabs.com/')
+        self.get_current_url()
+        self.assert_url('https://7745.by/cart')
+        # self.assert_word(self.get_tv_assert_word(), "Телевизоры")

@@ -1,5 +1,4 @@
 import time
-
 from selenium.webdriver import Keys
 from base.base_class import Base
 from selenium.webdriver.common.by import By
@@ -17,9 +16,7 @@ class Cart_page(Base):
     user_type_radiobutton = "//*[@id='svelte-page']/div/div[1]/div[4]/div[1]/label[2]/span/span[1]"
     unp_field = "//*[@id='cart[org][UNP]']"
     organization_name_field = "//*[@id='cart[org][name]']"
-    # delete_button = "//button[@title='Удалить из заказа']"
-    delete_button = "//*[@id='svelte-page']/div/div[1]/div[1]/div/div[3]/div[3]/button[2]"
-
+    delete_button = "//button[@title='Удалить из заказа']"
     profile_icon = "//div[@class='svg-icon header-icon__icon--person']"
 
 # GETTERS
@@ -76,5 +73,5 @@ class Cart_page(Base):
         self.click_delete_button()
         self.click_profile_icon()
         self.get_current_url()
-        time.sleep(5)
-        # self.assert_url('https://saucelabs.com/')
+        self.assert_url('https://7745.by/profile/common')
+        # self.assert_word(self.get_tv_assert_word(), "Телевизоры")

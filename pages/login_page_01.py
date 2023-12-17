@@ -39,6 +39,9 @@ class Login_page(Base):
     def get_tv_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.tv_button)))
 
+    def get_tv_assert_word(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.tv_assert_word)))
+
 # ACTIONS
     def click_enter_button(self):
         self.get_enter_button().click()
@@ -59,11 +62,26 @@ class Login_page(Base):
     def click_enter_2_button(self):
         self.get_enter_2_button().click()
         print("Second enter button clicked")
-        time.sleep(10)
+        time.sleep(10) # По другому не получается. Ожидание не срабатывает.
 
     def click_tv_button(self):
         self.get_tv_button().click()
         print("TV button clicked")
+
+    def user_name_assert(self):
+        user_name = self.driver.find_element(By.XPATH, "//*[@id ='panel']/div[1]/div[2]/div/div[3]/div[4]/div/div/a/div/div[2]")
+        user_name_text = user_name.text
+        print(f"{user_name_text}")
+        # assert user_name_text == "Ivanov Ivan"
+        assert user_name.text == "Ivanov Ivan"
+        print("User name correct")
+
+    def page_name_assert(self):
+        page_name = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/h1")
+        page_name_text = page_name.text
+        print(f"{page_name_text}")
+        assert page_name_text == "Телевизоры"
+        print("Page name correct")
 
 # METHODS
     def authorization(self):
@@ -76,4 +94,8 @@ class Login_page(Base):
         self.input_user_password("1A.2b.3c.4d")
         self.click_enter_2_button()
         self.click_tv_button()
-        # self.assert_word(self.get_main_word(), "Products")
+        self.get_current_url()
+        self.assert_url('https://7745.by/catalog/televizory')
+        self.user_name_assert()
+        self.page_name_assert()
+        # self.assert_word(self.get_tv_assert_word(), "Телевизоры")
