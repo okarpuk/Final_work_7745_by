@@ -63,15 +63,39 @@ class Cart_page(Base):
         self.get_profile_icon().click()
         print("Entered to profile")
 
+
+
+
+
+
+
+
 # METHODS
     def confirm_offer(self):
+        # ассерт что в корзине 1 товар
+        # вывести стоимость товара
+
         self.click_plus_one_product_button()
+
+        # ассерт что в корзине 2 товара
+        # асерт что цена стала х2
+
+        # клик минус 1 парт
+        # ассерт что в корзине 1 товар
+        # ассерт, что нынешняя стоимость товара равна первоначальной
+
+
         self.click_user_type_radiobutton()
         self.input_unp("12121212")
         self.input_organization_name("My test organization")
         self.driver.execute_script("window.scrollBy(0, -800);") #Другие способы прокручивания страницы до элемента не работают
         self.click_delete_button()
+
+        # проверить наличие надписи - Корзина пуста
+
         self.click_profile_icon()
         self.get_current_url()
         self.assert_url('https://7745.by/profile/common')
-        # self.assert_word(self.get_tv_assert_word(), "Телевизоры")
+
+        # проверить название старницы - Личный кабинет
+

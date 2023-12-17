@@ -106,7 +106,7 @@ class Tv_page(Base, unittest.TestCase):
 
     def cart_page_name_assert(self):
         cart_page_name = self.driver.find_element(By.XPATH, "//*[@id='svelte-page']/h1").text
-        print(f"{cart_page_name}")
+        print(f"Page name - {cart_page_name}")
         self.assertIn("Оформление заказа", cart_page_name)
         print("Page name correct")
 
