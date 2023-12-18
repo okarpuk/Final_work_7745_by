@@ -12,6 +12,7 @@ class Tv_page(Base):
         self.driver = driver
 
 # LOCATORS
+    actual_word = "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/h1"
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
     brands_dropdown = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[8]/label"
@@ -24,6 +25,9 @@ class Tv_page(Base):
     cart_button = "//a[@id='cart-link']"
 
 # GETTERS
+    def get_actual_word(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.actual_word)))
+
     def get_price_slider_1(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.price_slider_1)))
 
@@ -97,23 +101,11 @@ class Tv_page(Base):
         self.get_cart_button().click()
         print("Cart button clicked")
 
-    # def product_price(self):
-    #     product_price_locator = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div")
-    #     product_price_text = product_price_locator.text
-    #     print(f"PRODUCT PRICE - {product_price_text}")
-
-    def page_name_assert(self):
-        page_name = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/h1")
-        page_name_text = page_name.text
-        print(f"PAGE NAME - {page_name_text}")
-        assert page_name_text == "Телевизоры"
-        print("Page name correct")
-
 # METHODS
     def select_tv(self):
         self.get_current_url()
         self.assert_url('https://7745.by/catalog/televizory')
-        self.page_name_assert()
+        self.assert_page_text(self.get_actual_word(), "Телевизоры")
         self.move_price_slider_1()
         self.move_price_slider_2()
         self.click_brands_dropdown()
@@ -124,7 +116,6 @@ class Tv_page(Base):
         self.click_checkbox_screen_resolution()
         self.click_confirm_filter_button()
         time.sleep(3) # Ожидания не срабатывают - выдает ошибку:  stale element not found
-        # self.product_price()
         self.screenshot()
         self.click_add_to_cart_button()
         self.click_cart_button()
