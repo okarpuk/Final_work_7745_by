@@ -1,11 +1,13 @@
 import time
+import unittest
+
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class Cart_page(Base):
+class Cart_page(Base, unittest.TestCase):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -63,23 +65,23 @@ class Cart_page(Base):
         self.get_profile_icon().click()
         print("Entered to profile")
 
+    def cart_page_name_assert(self):
+        cart_page_name = self.driver.find_element(By.XPATH, "//*[@id='svelte-page']/h1").text
+        print(f"PAGE NAME - {cart_page_name}")
+        self.assertIn("Оформление заказа", cart_page_name)
+        print("Page name correct")
 
 
-
-# METHODS
+    # METHODS
     def confirm_offer(self):
+        self.get_current_url()
+        self.assert_url('https://7745.by/cart')
+        self.cart_page_name_assert()
+
         self.click_plus_one_product_button()
         self.click_user_type_radiobutton()
         self.input_unp("12121212")
         self.input_organization_name("My test organization")
         self.driver.execute_script("window.scrollBy(0, -800);") #Другие способы прокручивания страницы до элемента не работают
         self.click_delete_button()
-
-        # проверить наличие надписи - Корзина пуста
-
         self.click_profile_icon()
-        self.get_current_url()
-        self.assert_url('https://7745.by/profile/common')
-
-        # проверить название старницы - Личный кабинет
-

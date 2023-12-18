@@ -1,5 +1,4 @@
 import time
-import unittest
 
 from selenium.webdriver import ActionChains
 from base.base_class import Base
@@ -7,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-class Tv_page(Base, unittest.TestCase):
+class Tv_page(Base):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -17,7 +16,7 @@ class Tv_page(Base, unittest.TestCase):
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
     brands_dropdown = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[8]/label"
-    checkbox_lg = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[10]/div/div/div/div[10]/label/span[1]/span"
+    checkbox_lg = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[10]/div/div/div/div[9]/label/span[1]/span"
     checkbox_diagonal = "//*[@id='catalog-filter-form']/div[5]/div[3]/div[6]/label/span[1]"
     checkbox_screen_technology = "//*[@id='catalog-filter-form']/div[6]/div[3]/div[2]/label/span[1]/span"
     checkbox_screen_resolution = "//*[@id='catalog-filter-form']/div[7]/div[3]/div[3]/label/span[1]/span"
@@ -99,19 +98,24 @@ class Tv_page(Base, unittest.TestCase):
         self.get_cart_button().click()
         print("Cart button clicked")
 
-    def product_price(self):
-        product_price_locator = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div")
-        product_price_text = product_price_locator.text
-        print(f"PRODUCT PRICE - {product_price_text}")
+    # def product_price(self):
+    #     product_price_locator = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[1]/div[2]/div/div[2]/div")
+    #     product_price_text = product_price_locator.text
+    #     print(f"PRODUCT PRICE - {product_price_text}")
 
-    def cart_page_name_assert(self):
-        cart_page_name = self.driver.find_element(By.XPATH, "//*[@id='svelte-page']/h1").text
-        print(f"PAGE NAME - {cart_page_name}")
-        self.assertIn("Оформление заказа", cart_page_name)
+    def page_name_assert(self):
+        page_name = self.driver.find_element(By.XPATH, "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/h1")
+        page_name_text = page_name.text
+        print(f"PAGE NAME - {page_name_text}")
+        assert page_name_text == "Телевизоры"
         print("Page name correct")
 
 # METHODS
     def select_tv(self):
+        self.get_current_url()
+        self.assert_url('https://7745.by/catalog/televizory')
+        self.page_name_assert()
+
         self.move_price_slider_1()
         self.move_price_slider_2()
         self.click_brands_dropdown()
@@ -122,9 +126,8 @@ class Tv_page(Base, unittest.TestCase):
         self.click_checkbox_screen_resolution()
         self.click_confirm_filter_button()
         time.sleep(3) # Ожидания не срабатывают - выдает ощибку:  stale element not found
-        self.product_price()
+        # self.product_price()
         self.click_add_to_cart_button()
         self.click_cart_button()
-        self.get_current_url()
-        self.assert_url('https://7745.by/cart')
-        self.cart_page_name_assert()
+
+

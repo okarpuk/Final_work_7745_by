@@ -21,8 +21,19 @@ class User_info_page(Base):
         self.get_profile_exit_button().click()
         print("Profile exit button clicked")
 
+    def page_name_assert(self):
+        page_name = self.driver.find_element(By.CSS_SELECTOR, ".bread-h1.catalog-header-news-articles")
+        page_name_text = page_name.text
+        print(f"PAGE NAME - {page_name_text}")
+        assert page_name_text == "Личный кабинет"
+        print("Page name correct")
+
+
 # METHODS
     def exit_from_profile(self):
+        self.get_current_url()
+        self.assert_url('https://7745.by/profile/common')
+        self.page_name_assert()
         self.click_profile_exit_button()
         self.get_current_url()
         self.assert_url('https://7745.by/')
