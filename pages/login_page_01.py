@@ -18,6 +18,7 @@ class Login_page(Base):
     user_login = "//div[@class='open-logon open-login']//div//input[@id='login-modal-input-login']"
     user_password = "//div[@class='open-logon open-login']//div//input[@id='password']"
     enter_2_button = "div[class='open-logon open-login'] div input[type='submit']"
+    actual_word = "//*[@id ='panel']/div[1]/div[2]/div/div[3]/div[4]/div/div/a/div/div[2]"
     tv_button = "//a[@class='header-categories__item'][contains(text(),'Телевизоры')]"
 
 # GETTERS
@@ -36,11 +37,11 @@ class Login_page(Base):
     def get_enter_2_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.enter_2_button)))
 
+    def get_actual_word(self):
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.actual_word)))
+
     def get_tv_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.tv_button)))
-
-    def get_tv_assert_word(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.tv_assert_word)))
 
 # ACTIONS
     def click_enter_button(self):
@@ -68,13 +69,6 @@ class Login_page(Base):
         self.get_tv_button().click()
         print("TV button clicked")
 
-    def user_name_assert(self):
-        user_name = self.driver.find_element(By.XPATH, "//*[@id ='panel']/div[1]/div[2]/div/div[3]/div[4]/div/div/a/div/div[2]")
-        user_name_text = user_name.text
-        print(f"USER NAME - {user_name_text}")
-        assert user_name_text == "Ivanov Ivan"
-        print("User name correct")
-
 # METHODS
     def authorization(self):
         self.driver.get(self.url)
@@ -86,6 +80,6 @@ class Login_page(Base):
         self.input_user_login("final_project_test@mail.ru")
         self.input_user_password("1A.2b.3c.4d")
         self.click_enter_2_button()
-        self.user_name_assert()
+        self.assert_page_text(self.get_actual_word(), "Ivanov Ivan")
         self.screenshot()
         self.click_tv_button()

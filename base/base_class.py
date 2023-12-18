@@ -16,10 +16,10 @@ class Base():
         print("URL correct")
 
 # Method assert word
-    def assert_word(self, word, result):
-        value_word = word.text
-        assert value_word == result
-        print("Page word correct")
+    def assert_page_text(self, actual, expected):
+        actual_text = actual.text
+        assert actual_text == expected
+        print(f"ACTUAL PAGE TEXT - {actual_text}\nACTUAL TEXT CORRECT")
 
 # Method make screenshot
     def screenshot(self):
