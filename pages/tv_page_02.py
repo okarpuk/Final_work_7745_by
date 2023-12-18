@@ -1,5 +1,4 @@
 import time
-
 from selenium.webdriver import ActionChains
 from base.base_class import Base
 from selenium.webdriver.common.by import By
@@ -115,7 +114,6 @@ class Tv_page(Base):
         self.get_current_url()
         self.assert_url('https://7745.by/catalog/televizory')
         self.page_name_assert()
-
         self.move_price_slider_1()
         self.move_price_slider_2()
         self.click_brands_dropdown()
@@ -125,8 +123,9 @@ class Tv_page(Base):
         self.click_checkbox_screen_technology()
         self.click_checkbox_screen_resolution()
         self.click_confirm_filter_button()
-        time.sleep(3) # Ожидания не срабатывают - выдает ощибку:  stale element not found
+        time.sleep(3) # Ожидания не срабатывают - выдает ошибку:  stale element not found
         # self.product_price()
+        self.screenshot()
         self.click_add_to_cart_button()
         self.click_cart_button()
 

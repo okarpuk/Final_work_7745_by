@@ -75,16 +75,17 @@ class Login_page(Base):
         assert user_name_text == "Ivanov Ivan"
         print("User name correct")
 
-
 # METHODS
     def authorization(self):
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.get_current_url()
+        self.assert_url('https://7745.by/')
         self.click_enter_button()
         self.click_selector_registration()
         self.input_user_login("final_project_test@mail.ru")
         self.input_user_password("1A.2b.3c.4d")
         self.click_enter_2_button()
         self.user_name_assert()
+        self.screenshot()
         self.click_tv_button()

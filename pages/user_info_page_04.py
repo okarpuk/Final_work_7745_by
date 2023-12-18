@@ -28,12 +28,12 @@ class User_info_page(Base):
         assert page_name_text == "Личный кабинет"
         print("Page name correct")
 
-
 # METHODS
     def exit_from_profile(self):
         self.get_current_url()
         self.assert_url('https://7745.by/profile/common')
         self.page_name_assert()
+        self.screenshot()
         self.click_profile_exit_button()
         self.get_current_url()
         self.assert_url('https://7745.by/')

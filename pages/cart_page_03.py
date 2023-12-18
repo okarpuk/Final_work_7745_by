@@ -1,6 +1,4 @@
-import time
 import unittest
-
 from base.base_class import Base
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -77,11 +75,12 @@ class Cart_page(Base, unittest.TestCase):
         self.get_current_url()
         self.assert_url('https://7745.by/cart')
         self.cart_page_name_assert()
-
         self.click_plus_one_product_button()
+        self.screenshot()
         self.click_user_type_radiobutton()
         self.input_unp("12121212")
         self.input_organization_name("My test organization")
+        self.screenshot()
         self.driver.execute_script("window.scrollBy(0, -800);") #Другие способы прокручивания страницы до элемента не работают
         self.click_delete_button()
         self.click_profile_icon()
