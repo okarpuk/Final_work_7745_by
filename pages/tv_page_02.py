@@ -1,6 +1,6 @@
 import time
-from selenium.webdriver import ActionChains
 from base.base_class import Base
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -119,5 +119,3 @@ class Tv_page(Base):
         self.screenshot()
         self.click_add_to_cart_button()
         self.click_cart_button()
-
-

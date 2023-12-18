@@ -15,7 +15,7 @@ class Base():
         assert get_url == result
         print("URL correct")
 
-# Method assert word
+# Method assert control actual word
     def assert_page_text(self, actual, expected):
         actual_text = actual.text
         assert actual_text == expected
