@@ -13,8 +13,10 @@ class Login_page(Base):
         self.driver = driver
 
 # LOCATORS
-    enter_button = "//div[@id='logon-link']/div[2]"
+#     enter_button = "//div[@id='logon-link']/div[2]"
+    enter_button = "div.logon > #logon-link"
     selector_registration = "//div[@class='open-logon open-login']//div//select[@name='prefix']"
+    # selector_registration = "div.form-group[id='prefix-wrapper']"
     user_login = "//div[@class='open-logon open-login']//div//input[@id='login-modal-input-login']"
     user_password = "//div[@class='open-logon open-login']//div//input[@id='password']"
     enter_2_button = "div[class='open-logon open-login'] div input[type='submit']"
@@ -23,10 +25,14 @@ class Login_page(Base):
 
 # GETTERS
     def get_enter_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.enter_button)))
+        # return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.enter_button)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.enter_button)))
+
 
     def get_selector_registration(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.selector_registration)))
+        # return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.selector_registration)))
+
 
     def get_user_login(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_login)))
