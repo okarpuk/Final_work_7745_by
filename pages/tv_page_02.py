@@ -7,9 +7,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class Tv_page(Base):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    # def __init__(self, driver):
+    #     super().__init__(driver)
+    #     self.driver = driver
 
 # LOCATORS
     actual_word = "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/h1"

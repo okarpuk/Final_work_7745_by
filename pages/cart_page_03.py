@@ -5,9 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class Cart_page(Base):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    # def __init__(self, driver):
+    #     super().__init__(driver)
+    #     self.driver = driver
 
 # LOCATORS
     actual_word = "div[class='cart-form-section__header open-popup jc--n'] h2"

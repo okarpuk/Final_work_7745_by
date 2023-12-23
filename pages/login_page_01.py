@@ -8,9 +8,9 @@ from selenium.webdriver.support import expected_conditions as EC
 class Login_page(Base):
     url = 'https://www.7745.by/'
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    # def __init__(self, driver):
+    #     super().__init__(driver)
+    #     self.driver = driver
 
 # LOCATORS
 #     enter_button = "//div[@id='logon-link']/div[2]"

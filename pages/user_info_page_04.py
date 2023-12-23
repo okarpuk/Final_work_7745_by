@@ -5,9 +5,9 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class User_info_page(Base):
 
-    def __init__(self, driver):
-        super().__init__(driver)
-        self.driver = driver
+    # def __init__(self, driver):
+    #     super().__init__(driver)
+    #     self.driver = driver
 
 # LOCATORS
     actual_word = ".bread-h1.catalog-header-news-articles"
