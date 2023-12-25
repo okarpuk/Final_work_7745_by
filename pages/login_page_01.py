@@ -20,7 +20,7 @@ class Login_page(Base):
     user_password = "div.login-modal #password"
     enter_2_button = "div.login-modal [type='submit']"
     actual_word = "div.header-main__userbar :nth-child(4) .header-icon__text"
-    tv_button = "//a[@class='header-categories__item'][contains(text(),'Телевизоры')]"
+    tv_button = "div.header-categories [href='/catalog/televizory']"
 
 # GETTERS
     def get_enter_button(self):
@@ -43,7 +43,7 @@ class Login_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.actual_word)))
 
     def get_tv_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.tv_button)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.tv_button)))
 
 # ACTIONS
     def click_enter_button(self):
