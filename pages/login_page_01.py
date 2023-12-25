@@ -14,13 +14,12 @@ class Login_page(Base):
 
 # LOCATORS
 #     enter_button = "//div[@id='logon-link']/div[2]"
-    enter_button = "div.logon > #logon-link"
-    selector_registration = "//div[@class='open-logon open-login']//div//select[@name='prefix']"
-    # selector_registration = "div.form-group[id='prefix-wrapper']"
-    user_login = "//div[@class='open-logon open-login']//div//input[@id='login-modal-input-login']"
-    user_password = "//div[@class='open-logon open-login']//div//input[@id='password']"
-    enter_2_button = "div[class='open-logon open-login'] div input[type='submit']"
-    actual_word = "//*[@id ='panel']/div[1]/div[2]/div/div[3]/div[4]/div/div/a/div/div[2]"
+    enter_button = "div.logon #logon-link"
+    selector_registration = "div.login-modal [name='prefix']"
+    user_login = "div.login-modal #login-modal-input-login"
+    user_password = "div.login-modal #password"
+    enter_2_button = "div.login-modal [type='submit']"
+    actual_word = "div.header-main__userbar :nth-child(4) .header-icon__text"
     tv_button = "//a[@class='header-categories__item'][contains(text(),'Телевизоры')]"
 
 # GETTERS
@@ -28,23 +27,20 @@ class Login_page(Base):
         # return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.enter_button)))
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.enter_button)))
 
-
     def get_selector_registration(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.selector_registration)))
-        # return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.selector_registration)))
-
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.selector_registration)))
 
     def get_user_login(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_login)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.user_login)))
 
     def get_user_password(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_password)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.user_password)))
 
     def get_enter_2_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.enter_2_button)))
 
     def get_actual_word(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.actual_word)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.actual_word)))
 
     def get_tv_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.tv_button)))
