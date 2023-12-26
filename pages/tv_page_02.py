@@ -16,11 +16,14 @@ class Tv_page(Base):
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
     brands_dropdown = "div.js-show-features-block label"
-
-    # checkbox_lg = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[10]/div/div/div/div[9]/label/span[1]/span"
-    # checkbox_lg = "#catalog-filter-form label [value='lg']"
+    checkbox_lg = "#catalog-filter-form :nth-child(9) span.i-checkbox__faux"
 
     checkbox_diagonal = "//*[@id='catalog-filter-form']/div[5]/div[3]/div[6]/label/span[1]"
+
+    checkbox_diagonal = "
+
+
+
     checkbox_screen_technology = "//*[@id='catalog-filter-form']/div[6]/div[3]/div[2]/label/span[1]/span"
     checkbox_screen_resolution = "//*[@id='catalog-filter-form']/div[7]/div[3]/div[3]/label/span[1]/span"
     confirm_filter_button = "//*[@id='catalog-filter-form']/div[33]/button[1]"
