@@ -12,11 +12,14 @@ class Tv_page(Base):
     #     self.driver = driver
 
 # LOCATORS
-    actual_word = "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/h1"
+    actual_word = "h1.bread-h1"
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
-    brands_dropdown = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[8]/label"
-    checkbox_lg = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[10]/div/div/div/div[9]/label/span[1]/span"
+    brands_dropdown = "div.js-show-features-block label"
+
+    # checkbox_lg = "//*[@id='catalog-filter-form']/div[3]/div[2]/div[10]/div/div/div/div[9]/label/span[1]/span"
+    # checkbox_lg = "#catalog-filter-form label [value='lg']"
+
     checkbox_diagonal = "//*[@id='catalog-filter-form']/div[5]/div[3]/div[6]/label/span[1]"
     checkbox_screen_technology = "//*[@id='catalog-filter-form']/div[6]/div[3]/div[2]/label/span[1]/span"
     checkbox_screen_resolution = "//*[@id='catalog-filter-form']/div[7]/div[3]/div[3]/label/span[1]/span"
@@ -26,7 +29,7 @@ class Tv_page(Base):
 
 # GETTERS
     def get_actual_word(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.actual_word)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.actual_word)))
 
     def get_price_slider_1(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.price_slider_1)))
@@ -35,10 +38,10 @@ class Tv_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.price_slider_2)))
 
     def get_brands_dropdown(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.brands_dropdown)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.brands_dropdown)))
 
     def get_checkbox_lg(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_lg)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.checkbox_lg)))
 
     def get_checkbox_diagonal(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_diagonal)))
