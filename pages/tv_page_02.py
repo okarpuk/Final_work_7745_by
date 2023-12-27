@@ -20,11 +20,8 @@ class Tv_page(Base):
     checkbox_diagonal = "[data-param='11830'] :nth-child(9) span.i-checkbox__faux"
     checkbox_screen_technology = "[data-param='11829'] :nth-child(3) span.i-checkbox__faux"
     checkbox_screen_resolution = "[data-param='11841'] :nth-child(4) span.i-checkbox__faux"
-
-    confirm_filter_button = "//*[@id='catalog-filter-form']/div[33]/button[1]"
-
-
-    add_to_cart_button = "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[2]/div[1]/button"
+    confirm_filter_button = "//div[@class='catalog-sbf-top catalog-sbf-btnset']/button[1]" # или CSS "div.catalog-sbf-top .btn-orange"
+    add_to_cart_button = "div.action-btn .btn"
     cart_button = "//a[@id='cart-link']"
 
 # GETTERS
@@ -56,7 +53,7 @@ class Tv_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.confirm_filter_button)))
 
     def get_add_to_cart_button(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.add_to_cart_button)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.add_to_cart_button)))
 
     def get_cart_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.cart_button)))
