@@ -13,8 +13,7 @@ class Login_page(Base):
     #     self.driver = driver
 
 # LOCATORS
-#     enter_button = "//div[@id='logon-link']/div[2]"
-    enter_button = "div.logon #logon-link"
+    enter_button = "div.logon #logon-link" # или xpath "//div[@id='logon-link']/div[2]"
     selector_registration = "div.login-modal [name='prefix']"
     user_login = "div.login-modal #login-modal-input-login"
     user_password = "div.login-modal #password"
@@ -24,7 +23,6 @@ class Login_page(Base):
 
 # GETTERS
     def get_enter_button(self):
-        # return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.enter_button)))
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.enter_button)))
 
     def get_selector_registration(self):
