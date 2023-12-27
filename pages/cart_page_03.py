@@ -10,12 +10,12 @@ class Cart_page(Base):
     #     self.driver = driver
 
 # LOCATORS
-    actual_word = "div[class='cart-form-section__header open-popup jc--n'] h2"
-    plus_one_product_button = "//button[normalize-space()='+']"
-    user_type_radiobutton = "//*[@id='svelte-page']/div/div[1]/div[4]/div[1]/label[2]/span/span[1]"
-    unp_field = "//*[@id='cart[org][UNP]']"
-    organization_name_field = "//*[@id='cart[org][name]']"
-    delete_button = "//button[@title='Удалить из заказа']"
+    actual_word = "[data-modal='delivery'] h2"
+    plus_one_product_button = "//button[text()='+']"
+    user_type_radiobutton = "[for='cart[user][customer_type]_ur'] .i-radio__faux"
+    unp_field = "//input[@id='cart[org][UNP]']"
+    organization_name_field = "//input[@id='cart[org][name]']"
+    delete_button = "//div[@class='product-item__controls']/button[2]"
     profile_icon = "//div[@class='svg-icon header-icon__icon--person']"
 
 # GETTERS
@@ -26,7 +26,7 @@ class Cart_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.plus_one_product_button)))
 
     def get_user_type_radiobutton(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.user_type_radiobutton)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.user_type_radiobutton)))
 
     def get_unp_field(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.unp_field)))
