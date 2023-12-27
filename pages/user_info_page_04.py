@@ -10,7 +10,7 @@ class User_info_page(Base):
     #     self.driver = driver
 
 # LOCATORS
-    actual_word = ".bread-h1.catalog-header-news-articles"
+    actual_word = ".bread-h1"
     profile_exit_button = "//a[@class='btn btn-orange btn-orange--bordered']"
 
 # GETTERS

@@ -12,16 +12,16 @@ class Tv_page(Base):
     #     self.driver = driver
 
 # LOCATORS
-    actual_word = "h1.bread-h1"
+    actual_word = ".bread-h1"
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
-    brands_dropdown = "div.js-show-features-block label"
-    checkbox_lg = "div.catalog-filter-popover__columns_2 :nth-child(10) span.i-checkbox__faux"
+    brands_dropdown = ".catalog-filter__facet.clearfix [for='isSpoiled-3'].catalog-filter-control__spoiler"
+    checkbox_lg = ".catalog-filter-popover__columns_2 :nth-child(10) span.i-checkbox__faux"
     checkbox_diagonal = "[data-param='11830'] :nth-child(9) span.i-checkbox__faux"
     checkbox_screen_technology = "[data-param='11829'] :nth-child(3) span.i-checkbox__faux"
     checkbox_screen_resolution = "[data-param='11841'] :nth-child(4) span.i-checkbox__faux"
     confirm_filter_button = "//div[@class='catalog-sbf-top catalog-sbf-btnset']/button[1]" # или CSS "div.catalog-sbf-top .btn-orange"
-    add_to_cart_button = "div.action-btn .btn"
+    add_to_cart_button = ".action-btn .btn"
     cart_button = "//a[@id='cart-link']"
 
 # GETTERS
