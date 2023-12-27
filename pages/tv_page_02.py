@@ -16,16 +16,14 @@ class Tv_page(Base):
     price_slider_1 = "//*[@id='filter-range-price']/span[1]"
     price_slider_2 = "//*[@id='filter-range-price']/span[2]"
     brands_dropdown = "div.js-show-features-block label"
-    checkbox_lg = "#catalog-filter-form :nth-child(9) span.i-checkbox__faux"
+    checkbox_lg = "div.catalog-filter-popover__columns_2 :nth-child(10) span.i-checkbox__faux"
+    checkbox_diagonal = "[data-param='11830'] :nth-child(9) span.i-checkbox__faux"
+    checkbox_screen_technology = "[data-param='11829'] :nth-child(3) span.i-checkbox__faux"
+    checkbox_screen_resolution = "[data-param='11841'] :nth-child(4) span.i-checkbox__faux"
 
-    # checkbox_diagonal = "//*[@id='catalog-filter-form']/div[5]/div[3]/div[6]/label/span[1]"
-
-    checkbox_diagonal = "#catalog-filter-form input[data-min='54.5']"
-
-
-    checkbox_screen_technology = "//*[@id='catalog-filter-form']/div[6]/div[3]/div[2]/label/span[1]/span"
-    checkbox_screen_resolution = "//*[@id='catalog-filter-form']/div[7]/div[3]/div[3]/label/span[1]/span"
     confirm_filter_button = "//*[@id='catalog-filter-form']/div[33]/button[1]"
+
+
     add_to_cart_button = "//*[@id='panel']/div[1]/div[4]/div/div[2]/div[2]/div[6]/div[1]/div[1]/div/div[2]/div[2]/div[1]/button"
     cart_button = "//a[@id='cart-link']"
 
@@ -49,10 +47,10 @@ class Tv_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.checkbox_diagonal)))
 
     def get_checkbox_screen_technology(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_screen_technology)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.checkbox_screen_technology)))
 
     def get_checkbox_screen_resolution(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_screen_resolution)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.checkbox_screen_resolution)))
 
     def get_confirm_filter_button(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.confirm_filter_button)))
@@ -67,12 +65,12 @@ class Tv_page(Base):
     def move_price_slider_1(self):
         action = ActionChains(self.driver)
         action.click_and_hold(self.get_price_slider_1()).move_by_offset(20, 0).release().perform()
-        print("Slider 1 moved")
+        print("Slider min price moved")
 
     def move_price_slider_2(self):
         action = ActionChains(self.driver)
         action.click_and_hold(self.get_price_slider_2()).move_by_offset(-50, 0).release().perform()
-        print("Slider 2 moved")
+        print("Slider max price moved")
 
     def click_brands_dropdown(self):
         self.get_brands_dropdown().click()
