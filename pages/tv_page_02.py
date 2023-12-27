@@ -18,10 +18,9 @@ class Tv_page(Base):
     brands_dropdown = "div.js-show-features-block label"
     checkbox_lg = "#catalog-filter-form :nth-child(9) span.i-checkbox__faux"
 
-    checkbox_diagonal = "//*[@id='catalog-filter-form']/div[5]/div[3]/div[6]/label/span[1]"
+    # checkbox_diagonal = "//*[@id='catalog-filter-form']/div[5]/div[3]/div[6]/label/span[1]"
 
-    checkbox_diagonal = "
-
+    checkbox_diagonal = "#catalog-filter-form input[data-min='54.5']"
 
 
     checkbox_screen_technology = "//*[@id='catalog-filter-form']/div[6]/div[3]/div[2]/label/span[1]/span"
@@ -47,7 +46,7 @@ class Tv_page(Base):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.checkbox_lg)))
 
     def get_checkbox_diagonal(self):
-        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_diagonal)))
+        return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.CSS_SELECTOR, self.checkbox_diagonal)))
 
     def get_checkbox_screen_technology(self):
         return WebDriverWait(self.driver, 30).until(EC.element_to_be_clickable((By.XPATH, self.checkbox_screen_technology)))
